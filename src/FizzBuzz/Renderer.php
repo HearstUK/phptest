@@ -30,4 +30,20 @@ class Renderer extends \ArrayObject
         include $file;
         return ob_get_clean();
     }
+
+    /**
+     * Overrides default get behaviour
+     *
+     * This allows for registering functions as template variables
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        if ($this->$name instanceof \Closure) {
+            return call_user_func_array($this->$name, $arguments);
+        }
+    }
 }

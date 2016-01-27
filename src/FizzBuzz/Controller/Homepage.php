@@ -16,7 +16,7 @@ class Homepage extends AbstractController
             $this->tpl->articles = null;
         }
 
-        echo $this->tpl->render('homepage.phtml');
+        $this->render('homepage.phtml');
     }
 
     public function phpinfo()
@@ -30,6 +30,6 @@ class Homepage extends AbstractController
         
         $this->tpl->uri = $this->getRoutedParam('uri');
 
-        echo $this->tpl->render('404.phtml');
+        $this->render('404.phtml');
     }
 }

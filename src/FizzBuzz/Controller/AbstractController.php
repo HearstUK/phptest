@@ -47,4 +47,24 @@ abstract class AbstractController extends SpawnAbstractController
         header('Location: ' . $location, true, $status);
         exit;
     }
+
+    /**
+     * Renders template
+     *
+     * @param $template
+     * @throws \Exception
+     */
+    protected function render($template)
+    {
+        /** @var \FizzBuzz\Service\SectionsRepository $sectionsRepository */
+        $sectionsRepository = $this->app->container->get('SectionsRepository');
+        $this->tpl->sections = $sectionsRepository->findAll();
+
+        $this->tpl->sectionUrl = function ($section) {
+            $url = $this->app->router->generate('section', ['slug' => $section['slug']]);
+            return $url;
+        };
+
+        echo $this->tpl->render($template);
+    }
 }

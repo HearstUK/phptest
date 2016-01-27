@@ -25,6 +25,6 @@ class Article extends AbstractController
         }
 
         $this->tpl->article = $article;
-        echo $this->tpl->render('article/view.phtml');
+        $this->render('article/view.phtml');
     }
 }
