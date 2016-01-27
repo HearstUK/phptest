@@ -16,9 +16,9 @@
                 <a class="navbar-brand" href="/"><em>Fizz</em><strong>Buzz</strong></a>
             </div>
             <?php foreach ($this->sections as $section): ?>
-            <ul class="nav navbar-nav">
-                <li><a href="<?= $this->sectionUrl($section) ?>"><?= ucfirst(htmlentities($section['title'])) ?></a></li>
-            </ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="<?= $this->sectionUrl($section) ?>"><?= ucfirst(htmlentities($section['title'])) ?></a></li>
+                </ul>
             <?php endforeach ?>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/phpinfo">phpinfo</a></li>
