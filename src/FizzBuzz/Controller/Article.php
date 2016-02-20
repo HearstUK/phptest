@@ -18,6 +18,8 @@ class Article extends AbstractController
             throw new \Exception("Article not found", 404);
         }
 
+        $slug = str_replace(["\\", "'"], ["\\\\", "\\'"], $article['slug']);
+        $this->tpl->requestPath = "/read/$articleID-$slug";
         $this->tpl->article = $article;
         echo $this->tpl->render('article/view.phtml');
     }

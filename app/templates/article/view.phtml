@@ -11,4 +11,11 @@
     </div>
 </div>
 
+<script>
+    // Replace request path if it's different to the expected one
+    if (window.location.pathname !== '<?= $this->requestPath ?>') {
+        window.history.replaceState({}, 'FizzBuzz', '<?= $this->requestPath ?>');
+    }
+</script>
+
 <?php include __DIR__.'/../inc/footer.phtml'; ?>
