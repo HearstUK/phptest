@@ -6,6 +6,8 @@ class Homepage extends AbstractController
 {
     public function homepage()
     {
+        $this->renderMenu();
+
         // We display articles from the news section on the homepage
         $articlesRepository = $this->app->container->get('ArticlesRepository');
         $articles = $articlesRepository->findAll(['section_id' => 1]);
@@ -26,6 +28,8 @@ class Homepage extends AbstractController
 
     public function handle404()
     {
+        $this->renderMenu();
+
         $this->app->response->setStatusCode(404);
         
         $this->tpl->uri = $this->getRoutedParam('uri');
