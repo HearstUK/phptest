@@ -1,0 +1,24 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: osh
+ * Date: 20/02/16
+ * Time: 13:11
+ */
+?>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"><em>Fizz</em><strong>Buzz</strong></a>
+        </div>
+        <?php foreach ($this->allSectionsForMenu as $section): ?>
+            <ul class="nav navbar-nav">
+                <li><a href="/section/<?= $section['slug'] ?>"><?= ucfirst(htmlentities($section['title'])) ?></a></li>
+            </ul>
+        <?php endforeach; ?>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/phpinfo">phpinfo</a></li>
+        </ul>
+    </div>
+</nav>
+

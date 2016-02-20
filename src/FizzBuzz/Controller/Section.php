@@ -15,6 +15,8 @@ class Section extends AbstractController
             throw new \Exception("Section not found", 404);
         }
 
+        $this->renderMenu();
+
         $this->tpl->section = $section;
 
         $articlesRepository = $this->app->container->get('ArticlesRepository');

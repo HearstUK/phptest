@@ -16,4 +16,12 @@ abstract class AbstractController extends SpawnAbstractController
     {
         $this->tpl = new Renderer;
     }
+
+    protected function renderMenu()
+    {
+        $sectionsRepository  = $this->app->container->get('SectionsRepository');
+        $this->tpl->allSectionsForMenu = $sectionsRepository->findAll();
+        echo $this->tpl->render('inc/menu.phtml');
+        unset ($this->tpl->allSectionsForMenu);
+    }
 }
