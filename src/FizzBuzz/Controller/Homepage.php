@@ -6,6 +6,8 @@ class Homepage extends AbstractController
 {
     public function homepage()
     {
+        $this->initDefaultTemplateVars();
+
         // We display articles from the news section on the homepage
         $articlesRepository = $this->app->container->get('ArticlesRepository');
         $articles = $articlesRepository->findAll(['section_id' => 1]);

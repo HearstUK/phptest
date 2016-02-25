@@ -7,6 +7,8 @@ class Article extends AbstractController
 {
     public function view()
     {
+        $this->initDefaultTemplateVars();
+
         $articleID = (int) $this->getRoutedParam('id');
         if (!$articleID) {
             throw new \Exception("Article ID is invalid", 404);
