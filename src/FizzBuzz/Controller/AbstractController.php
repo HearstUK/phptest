@@ -16,4 +16,13 @@ abstract class AbstractController extends SpawnAbstractController
     {
         $this->tpl = new Renderer;
     }
+
+    protected function initDefaultTemplateVars()
+    {
+        $this->tpl->global = new \stdClass();
+
+        $sectionRepository = $this->app->container->get('SectionsRepository');
+        $sections = $sectionRepository->findAll();
+        $this->tpl->global->sections = $sections;
+    }
 }

@@ -6,6 +6,8 @@ class Section extends AbstractController
 {
     public function view()
     {
+        $this->initDefaultTemplateVars();
+
         $slug = $this->getRoutedParam('slug');
 
         $sectionsRepository = $this->app->container->get('SectionsRepository');
