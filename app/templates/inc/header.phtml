@@ -15,9 +15,18 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="/"><em>Fizz</em><strong>Buzz</strong></a>
             </div>
+<?php
+/** This feels a little wrong, but since we're not in a full MVC... */
+$sr = new \FizzBuzz\Service\SectionsRepository();
+foreach ($sr->findAll() as $s)
+{
+?>
             <ul class="nav navbar-nav">
-                <li><a href="/section/tasks">Tasks</a></li>
+                <li><a href="/section/<?php echo $s['slug'] ?>"><?php echo $s['title']; ?></a></li>
             </ul>
+<?php
+}
+?>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/phpinfo">phpinfo</a></li>
             </ul>
