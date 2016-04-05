@@ -18,6 +18,16 @@ class Article extends AbstractController
             throw new \Exception("Article not found", 404);
         }
 
+	// Check if article was loaded with correct slug; if not, redirect.
+	$slug = $this->getRoutedParam('slug');
+	if ($slug != $article['slug'])
+	{
+	    // No controller method for redirects, so hacky solution:
+	    $slug = $article['slug'];
+	    header("Location: $articleID-$slug");
+	    exit;
+	}
+
         $this->tpl->article = $article;
         echo $this->tpl->render('article/view.phtml');
     }
